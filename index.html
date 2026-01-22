@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metaeon.ai - The Meta Epoch Awaits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: #0a0a16;
+            color: #e0e0ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(41, 21, 94, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(94, 21, 94, 0.1) 0%, transparent 20%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animated background elements */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(64, 224, 208, 0.1);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(64, 224, 208, 0.3);
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #40e0d0, #9370db, #40e0d0);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .logo-sub {
+            font-size: 1rem;
+            color: #a0a0ff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .domain-badge {
+            background: rgba(64, 224, 208, 0.1);
+            border: 1px solid #40e0d0;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            color: #40e0d0;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: #b0b0ff;
+        }
+
+        .definition {
+            display: inline-block;
+            background: rgba(41, 21, 94, 0.3);
+            border-left: 4px solid #9370db;
+            padding: 20px;
+            margin: 30px auto;
+            text-align: left;
+            max-width: 800px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .definition h3 {
+            color: #40e0d0;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Content sections */
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #40e0d0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 1.8rem;
+        }
+
+        .applications, .pricing {
+            background: rgba(16, 16, 36, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .app-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .app-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e0e0ff;
+        }
+
+        .rating {
+            color: #FFD700;
+        }
+
+        .app-desc {
+            color: #b0b0ff;
+            line-height: 1.5;
+        }
+
+        /* Pricing section */
+        .price-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #40e0d0;
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
+        }
+
+        .payment-plan {
+            background: rgba(41, 21, 94, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .payment-plan h4 {
+            color: #9370db;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .contact-info {
+            background: rgba(64, 224, 208, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid rgba(64, 224, 208, 0.3);
+        }
+
+        .contact-info h4 {
+            color: #40e0d0;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .email {
+            font-size: 1.4rem;
+            color: #e0e0ff;
+            word-break: break-all;
+            margin: 15px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #40e0d0, #9370db);
+            color: #0a0a16;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(64, 224, 208, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(64, 224, 208, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(64, 224, 208, 0.3);
+            margin-top: 60px;
+            color: #a0a0ff;
+            font-size: 0.9rem;
+        }
+
+        .footer-highlight {
+            color: #40e0d0;
+            font-weight: 600;
+        }
+
+        /* Glitch effect for logo */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00ff;
+            animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 #00ffff;
+            animation: glitch-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-1 {
+            0% { clip-path: inset(40% 0 61% 0); }
+            100% { clip-path: inset(92% 0 1% 0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { clip-path: inset(25% 0 58% 0); }
+            100% { clip-path: inset(87% 0 10% 0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="bg-elements" id="particles"></div>
+
+    <div class="container">
+        <!-- Header with logo -->
+        <header>
+            <div class="logo">
+                <div>
+                    <div class="logo-text glitch" data-text="metaeon.ai">metaeon.ai</div>
+                    <div class="logo-sub">THE NEXT DIGITAL EPOCH</div>
+                </div>
+            </div>
+            <div class="domain-badge">METAEON.AI</div>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <h1>Welcome to the <span class="hero-highlight">Meta Epoch</span></h1>
+            <p>Where intelligence transcends physical bounds and defines a new era of digital existence.</p>
+            
+            <div class="definition">
+                <h3>Definition: Meta·eon /ˈmetəˌiːən/</h3>
+                <p><strong>Meta</strong> (beyond, transcendent) + <strong>Eon</strong> (an immeasurably long period of time).</p>
+                <p>A new epoch defined by digital intelligence, virtual existence, and abstract systems — an era where consciousness and code converge to create realities beyond physical constraints.</p>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <div class="content-section">
+            <!-- Applications section -->
+            <section class="applications">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> DOMAIN APPLICATIONS</h2>
+                
+                <div class="app-item">
+                    <div class="app-title">
+                        <div class="app-name">Next-Gen AI & Virtual Worlds</div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="app-desc">An AI-driven platform transcending current "metaverse" concepts. A fusion of intelligent agents, digital twins, and user-co-created realities.</div>
+                </div>
+                
+                <div class="app-item">
+                    <div class="app-title">
+                        <div class="app-name">Advanced AI Infrastructure</div>
+                        <div class="rating">⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="app-desc">Foundational OS or framework for building the Meta Epoch. Tools and protocols for complex virtual worlds, simulations, and multi-agent systems.</div>
+                </div>
+                
+                <div class="app-item">
+                    <div class="app-title">
+                        <div class="app-name">Futures Research & Think Tank</div>
+                        <div class="rating">⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="app-desc">A collective studying technological singularities, digital civilizations, and post-human futures. Philosophy meets frontier technology.</div>
+                </div>
+                
+                <div class="app-item">
+                    <div class="app-title">
+                        <div class="app-name">Sci-Fi Narrative & Game IP</div>
+                        <div class="rating">⭐⭐⭐</div>
+                    </div>
+                    <div class="app-desc">Core title for epic sci-fi games, films, or series exploring consciousness evolution, dimensional transcendence, and civilization leaps.</div>
+                </div>
+            </section>
+
+            <!-- Pricing & contact section -->
+            <section class="pricing">
+                <h2 class="section-title"><i class="fas fa-gem"></i> STRATEGIC ASSET</h2>
+                
+                <div class="price-tag">$36,900</div>
+                <p>This is not a tool name, but the title of an era declaration. A unique digital asset for visionary builders defining the next paradigm shift.</p>
+                
+                <div class="payment-plan">
+                    <h4>FLEXIBLE PAYMENT PLAN</h4>
+                    <p>Available in <strong>6 installments</strong> of $6,150 each</p>
+                    <p>Contact to discuss customized payment terms</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h4>FOR INQUIRIES & ACQUISITION</h4>
+                    <p>This premium .ai domain is available for strategic acquisition</p>
+                    <div class="email">joshua369x@gmail.com</div>
+                    <a href="mailto:joshua369x@gmail.com?subject=metaeon.ai%20Domain%20Inquiry" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> INITIATE ACQUISITION
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p><span class="footer-highlight">metaeon.ai</span> — A unique 7-character .ai domain representing the convergence of intelligence and epoch.</p>
+            <p>Perfect for ventures defining the future of AI, virtual worlds, and digital civilization.</p>
+            <p style="margin-top: 20px;">© <span id="currentYear"></span> — This Domain is Available for Acquisition</p>
+        </footer>
+    </div>
+
+    <script>
+        // Generate background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
