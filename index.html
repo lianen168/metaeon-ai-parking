@@ -22,7 +22,6 @@
                             bg: '#050507',
                             void: '#0a0a0f',
                             // UPDATED: A safer, more generic "Tech Blue" (Electric Azure)
-                            // Distinct from Meta's official #0081FB
                             meta: '#2563EB',    
                             gold: '#D4AF37',    // Eternity Gold
                             text: '#F3F4F6'
@@ -86,7 +85,6 @@
 
         .wing-left {
             left: 0;
-            /* Updated Gradient: Electric Azure to Cyan */
             background: linear-gradient(135deg, #2563EB, #00D4FF);
             transform: rotate(-15deg);
             animation: wing-beat-left 4s ease-in-out infinite;
@@ -108,42 +106,26 @@
             50% { transform: rotate(10deg) scaleX(0.85); }
         }
 
-        /* 
-           NAV LOGO ANIMATION SEQUENCE 
-           Sequence: Meta (Blue) -> Aeon (Gold) -> Eon (White)
-        */
+        /* NAV LOGO ANIMATION SEQUENCE */
         .char {
             display: inline-block;
             transition: color 0.5s ease, text-shadow 0.5s ease;
             color: #555; /* Default Dim Color */
         }
 
-        /* Group 1: M, E, T (Only active during Meta) */
-        .seq-meta {
-            animation: highlight-meta 9s infinite;
-        }
-        /* Group 2: A (Active during Meta AND Aeon) */
-        .seq-bridge-a {
-            animation: highlight-bridge-a 9s infinite;
-        }
-        /* Group 3: E, O, N (Active during Aeon AND Eon) */
-        .seq-aeon {
-            animation: highlight-aeon 9s infinite;
-        }
+        .seq-meta { animation: highlight-meta 9s infinite; }
+        .seq-bridge-a { animation: highlight-bridge-a 9s infinite; }
+        .seq-aeon { animation: highlight-aeon 9s infinite; }
 
-        /* Keyframes for the Sequence */
         @keyframes highlight-meta {
-            /* Updated Blue Shadow */
             0%, 30% { color: #2563EB; text-shadow: 0 0 15px rgba(37, 99, 235, 0.7); } 
             35%, 100% { color: #444; text-shadow: none; }
         }
-
         @keyframes highlight-bridge-a {
             0%, 30% { color: #2563EB; text-shadow: 0 0 15px rgba(37, 99, 235, 0.7); }
             33%, 63% { color: #D4AF37; text-shadow: 0 0 15px rgba(212,175,55,0.7); }
             66%, 100% { color: #444; text-shadow: none; }
         }
-
         @keyframes highlight-aeon {
             0%, 30% { color: #444; text-shadow: none; }
             33%, 63% { color: #D4AF37; text-shadow: 0 0 15px rgba(212,175,55,0.7); }
@@ -159,7 +141,6 @@
             transition: all 0.4s ease;
         }
         .glass-card:hover {
-            /* Hover border color updated to new blue */
             border-color: rgba(37, 99, 235, 0.5); 
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
@@ -192,17 +173,13 @@
     <nav class="relative z-50 container mx-auto px-6 py-8 flex justify-between items-center">
         <!-- ANIMATED NAV LOGO -->
         <div class="text-2xl font-extrabold tracking-widest flex items-center select-none cursor-default">
-            <!-- M E T -->
             <span class="char seq-meta">M</span>
             <span class="char seq-meta">E</span>
             <span class="char seq-meta">T</span>
-            <!-- A (The Bridge) -->
             <span class="char seq-bridge-a">A</span>
-            <!-- E O N -->
             <span class="char seq-aeon">E</span>
             <span class="char seq-aeon">O</span>
             <span class="char seq-aeon">N</span>
-            <!-- .AI -->
             <span class="text-gray-600 text-lg ml-1 font-normal">.AI</span>
         </div>
 
@@ -260,10 +237,11 @@
     <section class="relative z-10 container mx-auto px-6 py-20 border-t border-white/5 bg-aeon-void/50">
         <div class="grid md:grid-cols-2 gap-6">
             
-            <!-- Case 1: The Brand Fit -->
+            <!-- Case 1: The Brand Fit (ICON UPDATED) -->
             <div class="glass-card p-8 rounded-2xl">
                 <div class="w-12 h-12 rounded-full bg-aeon-meta/20 flex items-center justify-center text-aeon-meta mb-4">
-                    <i class="fa-brands fa-meta text-2xl"></i>
+                    <!-- CHANGED ICON: From fa-meta to fa-cube (Safe & Generic) -->
+                    <i class="fa-solid fa-cube text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2">The Ultimate Meta Asset</h3>
                 <p class="text-gray-400 text-sm">
