@@ -8,6 +8,7 @@
     
     <!-- Fonts & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Outfit for Main Text, Cinzel for the 'ae' wings -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
@@ -20,7 +21,9 @@
                         aeon: {
                             bg: '#050507',
                             void: '#0a0a0f',
-                            meta: '#0668E1',    // Meta Official Blue
+                            // UPDATED: A safer, more generic "Tech Blue" (Electric Azure)
+                            // Distinct from Meta's official #0081FB
+                            meta: '#2563EB',    
                             gold: '#D4AF37',    // Eternity Gold
                             text: '#F3F4F6'
                         }
@@ -83,7 +86,8 @@
 
         .wing-left {
             left: 0;
-            background: linear-gradient(135deg, #0668E1, #00B5FF);
+            /* Updated Gradient: Electric Azure to Cyan */
+            background: linear-gradient(135deg, #2563EB, #00D4FF);
             transform: rotate(-15deg);
             animation: wing-beat-left 4s ease-in-out infinite;
         }
@@ -129,20 +133,21 @@
 
         /* Keyframes for the Sequence */
         @keyframes highlight-meta {
-            0%, 30% { color: #0668E1; text-shadow: 0 0 10px rgba(6,104,225,0.6); } /* Blue */
-            35%, 100% { color: #444; text-shadow: none; } /* Dim */
+            /* Updated Blue Shadow */
+            0%, 30% { color: #2563EB; text-shadow: 0 0 15px rgba(37, 99, 235, 0.7); } 
+            35%, 100% { color: #444; text-shadow: none; }
         }
 
         @keyframes highlight-bridge-a {
-            0%, 30% { color: #0668E1; text-shadow: 0 0 10px rgba(6,104,225,0.6); } /* Blue */
-            33%, 63% { color: #D4AF37; text-shadow: 0 0 10px rgba(212,175,55,0.6); } /* Gold */
-            66%, 100% { color: #444; text-shadow: none; } /* Dim */
+            0%, 30% { color: #2563EB; text-shadow: 0 0 15px rgba(37, 99, 235, 0.7); }
+            33%, 63% { color: #D4AF37; text-shadow: 0 0 15px rgba(212,175,55,0.7); }
+            66%, 100% { color: #444; text-shadow: none; }
         }
 
         @keyframes highlight-aeon {
-            0%, 30% { color: #444; text-shadow: none; } /* Dim */
-            33%, 63% { color: #D4AF37; text-shadow: 0 0 10px rgba(212,175,55,0.6); } /* Gold */
-            66%, 95% { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.8); } /* White/Eon */
+            0%, 30% { color: #444; text-shadow: none; }
+            33%, 63% { color: #D4AF37; text-shadow: 0 0 15px rgba(212,175,55,0.7); }
+            66%, 95% { color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.9); }
             100% { color: #444; text-shadow: none; }
         }
 
@@ -154,7 +159,8 @@
             transition: all 0.4s ease;
         }
         .glass-card:hover {
-            border-color: rgba(6, 104, 225, 0.3);
+            /* Hover border color updated to new blue */
+            border-color: rgba(37, 99, 235, 0.5); 
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
         }
