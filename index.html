@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metaeon.ai | The Infinite Evolution</title>
-    <meta name="description" content="Premium Domain for Sale. The ultimate brand for the Metaverse, Digital Legacy, and the future of Meta.">
+    <title>Metaeon.ai | The Infinite Era of Intelligence</title>
+    <meta name="description" content="Premium Domain for Sale. The ultimate brand for Metaverse Infrastructure, Digital Legacy, and AI Evolution.">
     
     <!-- Fonts & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Outfit for Main Text, Cinzel for the 'ae' wings -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,34 +18,28 @@
                 extend: {
                     colors: {
                         aeon: {
-                            bg: '#050507',
-                            void: '#0a0a0f',
-                            meta: '#0668E1',    // Meta Official Blue
-                            gold: '#D4AF37',    // Eternity Gold
-                            text: '#F3F4F6'
+                            black: '#000000',
+                            void: '#030712',    // Deepest Space
+                            gold: '#ffd700',    // Time / Eternity
+                            blue: '#3b82f6',    // Meta / Tech
+                            plasma: '#6366f1',  // Energy
+                            sub: 'rgba(255, 255, 255, 0.05)'
                         }
                     },
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'], 
-                        serif: ['Cinzel', 'serif'],
+                        header: ['Orbitron', 'sans-serif'], // Futuristic
+                        serif: ['Cinzel', 'serif'],         // Timeless/Epic
+                        body: ['Space Grotesk', 'sans-serif'],
                     },
                     animation: {
-                        'float': 'float 8s ease-in-out infinite',
-                        'breathe': 'breathe 4s ease-in-out infinite',
-                        'wing-flap': 'wing-flap 5s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
-                        breathe: {
-                            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
-                            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
-                        },
-                        'wing-flap': {
-                            '0%, 100%': { transform: 'rotate(0deg)' },
-                            '50%': { transform: 'rotate(5deg)' }, /* Subtle flap */
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -56,92 +49,57 @@
 
     <style>
         body {
-            background-color: #050507;
-            color: #F3F4F6;
+            background-color: #030712;
+            color: #e2e8f0;
             overflow-x: hidden;
         }
 
-        /* 
-           THE BUTTERFLY CONTAINER
-           Holds: Met + [ae + ∞] + on
-        */
-        .logo-container {
-            display: inline-flex;
-            align-items: baseline; /* Align text baselines */
-        }
-
-        .butterfly-core {
-            display: inline-grid;
-            place-items: center;
-            position: relative;
-            width: 1.8em; /* Width for the ae pair */
-            margin: 0 -0.1em; /* Pull letters closer */
-        }
-
-        /* The Infinity Symbol (Background) */
-        .infinity-symbol {
-            position: absolute;
-            font-size: 0.6em; /* Smaller than letters */
-            color: rgba(255, 255, 255, 0.4);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -40%); /* Center it */
+        /* Starfield Background */
+        .stars {
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            background-repeat: repeat;
+            opacity: 0.3;
+            position: fixed;
+            inset: 0;
             z-index: 0;
-            animation: breathe 4s ease-in-out infinite;
         }
 
-        /* The Wings (Lower Case a & e) */
-        .wing-text {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            position: relative;
-            z-index: 10;
-            display: inline-block;
-            line-height: 1;
-            /* Blend mode makes the infinity symbol visible "through" or behind */
-            mix-blend-mode: screen; 
-            transition: all 0.3s ease;
+        /* Golden Glow Text */
+        .text-gold-glow {
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Blue Glow Text */
+        .text-blue-glow {
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
         }
 
-        .wing-left {
-            color: #0668E1;
-            /* Skew and Rotate to look like left wing */
-            transform: skewX(-5deg) rotate(-5deg);
-            background: linear-gradient(135deg, #0668E1 20%, #4facfe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-right: -0.15em; /* Overlap with e */
-        }
-
-        .wing-right {
-            color: #D4AF37;
-            /* Skew and Rotate to look like right wing */
-            transform: skewX(5deg) rotate(5deg);
-            background: linear-gradient(225deg, #D4AF37 20%, #FDC830 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-left: -0.15em; /* Overlap with a */
-        }
-
-        /* Hover Effect for the Butterfly */
-        .butterfly-core:hover .wing-left {
-            transform: skewX(-10deg) rotate(-15deg) translateX(-2px);
-        }
-        .butterfly-core:hover .wing-right {
-            transform: skewX(10deg) rotate(15deg) translateX(2px);
-        }
-
-        /* Glass Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+        /* Glass Panel */
+        .aeon-panel {
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
             transition: all 0.4s ease;
         }
-        .glass-card:hover {
-            border-color: rgba(6, 104, 225, 0.3);
-            background: rgba(255, 255, 255, 0.05);
+        
+        .aeon-panel:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 215, 0, 0.3);
             transform: translateY(-5px);
+        }
+        
+        /* Time Circle Accent */
+        .time-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 215, 0, 0.2);
+            pointer-events: none;
         }
 
         #toast {
@@ -157,179 +115,165 @@
         }
     </style>
 </head>
-<body class="font-sans flex flex-col min-h-screen selection:bg-aeon-meta selection:text-white">
+<body class="font-body selection:bg-aeon-gold selection:text-black flex flex-col min-h-screen">
 
-    <!-- Background Elements -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-aeon-meta/10 rounded-full blur-[150px] animate-float"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-aeon-gold/5 rounded-full blur-[150px]" style="animation-delay: -4s;"></div>
+    <div class="stars"></div>
+
+    <!-- Cosmic Fog -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-20%] left-[20%] w-[800px] h-[800px] bg-aeon-blue/10 blur-[150px] rounded-full animate-pulse-slow"></div>
+        <div class="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-aeon-gold/5 blur-[120px] rounded-full"></div>
     </div>
 
     <!-- Nav -->
-    <nav class="relative z-50 container mx-auto px-6 py-8 flex justify-between items-center">
-        <!-- Logo in Nav (Smaller Version) -->
-        <div class="text-xl font-bold tracking-wide text-white flex items-center">
-            Met
-            <div class="butterfly-core text-2xl mx-[2px]">
-                <span class="wing-text wing-left text-xl">a</span>
-                <span class="wing-text wing-right text-xl">e</span>
-            </div>
-            on.ai
+    <nav class="relative z-40 container mx-auto px-6 py-8 flex justify-between items-center border-b border-aeon-sub">
+        <div class="font-header text-xl tracking-[0.2em] font-bold text-white">
+            META<span class="text-aeon-gold">EON</span>.AI
         </div>
-        <button onclick="handleEmailClick(event)" class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-white border-b border-transparent hover:border-aeon-gold transition-all pb-1">
-            Contact Owner
+        <button onclick="handleEmailClick(event)" class="font-header text-xs text-aeon-gold border border-aeon-gold/30 px-6 py-2 hover:bg-aeon-gold hover:text-black transition-all uppercase tracking-widest">
+            Inquire
         </button>
     </nav>
 
     <!-- Main Hero -->
-    <main class="relative z-10 container mx-auto px-6 pt-32 pb-32 text-center flex-grow">
+    <main class="relative z-10 container mx-auto px-6 pt-24 pb-32 flex flex-col items-center text-center flex-grow">
         
+        <!-- Decorative Ring -->
+        <div class="w-64 h-64 time-circle animate-spin-slow mb-[-150px]"></div>
+
         <div class="mb-8">
-             <span class="py-1 px-3 rounded-full border border-aeon-meta/30 bg-aeon-meta/10 text-aeon-meta text-xs uppercase tracking-widest">
-                The Butterfly Effect of AI
-             </span>
+            <span class="font-header text-aeon-blue text-xs tracking-[0.5em] uppercase bg-aeon-blue/10 px-4 py-1 rounded-full border border-aeon-blue/20">
+                The Next Era
+            </span>
         </div>
 
-        <!-- THE MAIN TITLE -->
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-none mb-8 tracking-tight flex justify-center items-center logo-container">
-            <span>Met</span>
-            
-            <!-- THE AE BUTTERFLY CORE -->
-            <div class="butterfly-core mx-1">
-                <!-- 1. Infinity Symbol (Behind) -->
-                <i class="fa-solid fa-infinity infinity-symbol"></i>
-                <!-- 2. Wings (ae) -->
-                <div class="relative z-10 flex items-center justify-center">
-                    <span class="wing-text wing-left">a</span>
-                    <span class="wing-text wing-right">e</span>
-                </div>
-            </div>
-            
-            <span>on</span>
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 relative z-10">
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">BEYOND</span>
+            <span class="block text-aeon-gold text-gold-glow mt-2">INFINITY</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
-            The infinite evolution of the Metaverse. 
-            <br/>Where <span class="text-aeon-meta font-medium">Meta Blue</span> meets <span class="text-aeon-gold font-medium">Eternal Gold</span>.
+        <p class="font-body text-xl md:text-2xl text-gray-400 max-w-2xl mb-12 font-light leading-relaxed">
+            Defining the <span class="text-white">Digital Afterlife</span>, <span class="text-aeon-blue">Metaverse Infrastructure</span>, and the <span class="text-aeon-gold">Evolution of AI</span>.
+            <br/><span class="text-sm text-gray-600 mt-4 block tracking-widest uppercase">// A Brand for the Ages.</span>
         </p>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col md:flex-row justify-center gap-4 relative z-20">
+        <!-- Action Module -->
+        <div class="flex flex-col md:flex-row gap-6 w-full max-w-lg relative z-20">
+            <!-- Buy Button -->
             <a href="https://www.afternic.com/domain/metaeon.ai" target="_blank" 
-               class="px-10 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(6,104,225,0.4)]">
+               class="group relative flex-1 bg-white text-black font-header font-bold py-4 px-8 hover:bg-aeon-gold transition-all duration-300 uppercase tracking-wider text-center border-2 border-white hover:border-aeon-gold">
                 Acquire Asset
             </a>
+            
+            <!-- Email Button -->
             <button onclick="handleEmailClick(event)" 
-               class="px-10 py-4 border border-white/10 bg-white/5 text-white font-medium rounded-full hover:bg-white/10 hover:border-aeon-gold/50 transition-all duration-300 backdrop-blur-md">
-                Strategic Inquiry
+               class="flex-1 border border-white/20 text-white font-header py-4 px-8 hover:border-aeon-blue hover:text-aeon-blue transition-all duration-300 uppercase tracking-widest bg-black/50 backdrop-blur-md">
+                Make Offer
             </button>
         </div>
     </main>
 
-    <!-- Value Matrix (2x2) -->
-    <section class="relative z-10 container mx-auto px-6 py-20 border-t border-white/5 bg-aeon-void/50">
+    <!-- Use Cases Grid (2x2 Matrix) -->
+    <section class="relative z-10 container mx-auto px-6 py-20 border-t border-aeon-sub bg-black/40">
         <div class="grid md:grid-cols-2 gap-6">
             
-            <!-- Case 1: The Brand Fit -->
-            <div class="glass-card p-8 rounded-2xl group">
-                <div class="w-12 h-12 rounded-full bg-aeon-meta/20 flex items-center justify-center text-aeon-meta mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fa-brands fa-meta text-2xl"></i>
+            <!-- Case 1: The Metaverse -->
+            <div class="aeon-panel p-10 group">
+                <div class="text-3xl text-aeon-blue mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i class="fa-solid fa-globe"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">The "Meta" Evolution</h3>
-                <p class="text-gray-400 text-sm">
-                    "Aeon" (Time/Eternity) is the logical successor to "Meta" (Space). It represents the timeline of the Metaverse.
+                <h3 class="font-header text-xl text-white mb-2">Metaverse Infrastructure</h3>
+                <p class="font-body text-gray-400 text-sm leading-relaxed">
+                    "Meta" represents the platform. The ultimate domain for building infinite digital worlds and virtual real estate.
                 </p>
             </div>
 
-            <!-- Case 2: Digital Legacy -->
-            <div class="glass-card p-8 rounded-2xl group">
-                <div class="w-12 h-12 rounded-full bg-aeon-gold/20 flex items-center justify-center text-aeon-gold mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-infinity text-xl"></i>
+            <!-- Case 2: Digital Legacy (Aeon) -->
+            <div class="aeon-panel p-10 group">
+                <div class="text-3xl text-aeon-gold mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i class="fa-solid fa-hourglass-half"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Digital Eternity</h3>
-                <p class="text-gray-400 text-sm">
-                    Perfect for services offering digital twins, AI consciousness preservation, and legacy avatars that last an eon.
+                <h3 class="font-header text-xl text-white mb-2">Digital Legacy & Eternity</h3>
+                <p class="font-body text-gray-400 text-sm leading-relaxed">
+                    "Aeon" implies eternity. Perfect for AI services that preserve human consciousness, memories, or digital history forever.
                 </p>
             </div>
 
-            <!-- Case 3: Infrastructure -->
-            <div class="glass-card p-8 rounded-2xl group">
-                <div class="w-12 h-12 rounded-full bg-blue-400/20 flex items-center justify-center text-blue-400 mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-network-wired text-xl"></i>
+            <!-- Case 3: AI Evolution -->
+            <div class="aeon-panel p-10 group">
+                <div class="text-3xl text-aeon-plasma mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i class="fa-solid fa-microchip"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Metaverse Backbone</h3>
-                <p class="text-gray-400 text-sm">
-                    A powerful name for the underlying infrastructure (cloud, blockchain, AI) that powers persistent virtual worlds.
+                <h3 class="font-header text-xl text-white mb-2">AGI Evolution</h3>
+                <p class="font-body text-gray-400 text-sm leading-relaxed">
+                    Position your brand as the "Next Eon" of computing. A name that suggests a major leap forward in artificial intelligence.
                 </p>
             </div>
 
-            <!-- Case 4: Future AI -->
-            <div class="glass-card p-8 rounded-2xl group">
-                <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-brain text-xl"></i>
+            <!-- Case 4: Quantum/Time -->
+            <div class="aeon-panel p-10 group">
+                <div class="text-3xl text-white mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i class="fa-solid fa-atom"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">AGI & Superintelligence</h3>
-                <p class="text-gray-400 text-sm">
-                    For AI systems designed to operate on timescales beyond human perception. The intelligence of the eons.
+                <h3 class="font-header text-xl text-white mb-2">Quantum Simulation</h3>
+                <p class="font-body text-gray-400 text-sm leading-relaxed">
+                    For technologies that transcend current time limitations. Quantum computing, predictive analytics, and future simulation.
                 </p>
             </div>
 
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing / Valuation -->
     <section class="relative z-10 container mx-auto px-6 py-24">
-        <div class="max-w-4xl mx-auto glass-card rounded-3xl p-10 md:p-16 text-center border-t border-aeon-meta/30 relative overflow-hidden">
-            
-            <h2 class="text-3xl font-bold text-white mb-2 relative z-10">Asset Acquisition</h2>
-            <p class="text-aeon-meta text-xs font-bold uppercase tracking-widest mb-12 relative z-10">Premium Domain Valuation</p>
+        <div class="max-w-3xl mx-auto border border-aeon-gold/20 bg-aeon-void p-8 md:p-12 text-center relative overflow-hidden">
+            <!-- Background Glow -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-2 bg-gradient-to-r from-transparent via-aeon-gold to-transparent opacity-50"></div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
-                <div class="text-left space-y-1">
-                    <p class="text-gray-500 text-xs uppercase tracking-widest">Market Price</p>
-                    <div class="text-6xl font-bold text-white tracking-tighter">$42,000</div>
-                    <div class="flex items-center gap-2 mt-2">
-                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                        <p class="text-gray-400 text-xs">Available Now</p>
-                    </div>
+            <h2 class="font-serif text-3xl text-white mb-2">Asset Valuation</h2>
+            <p class="font-body text-gray-500 text-sm mb-12 uppercase tracking-widest">Secure the Future Identity</p>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left space-y-2">
+                    <p class="text-aeon-blue text-xs font-bold uppercase tracking-widest">Buy It Now</p>
+                    <div class="text-5xl font-header font-bold text-white">$42,000</div>
+                    <p class="text-gray-500 text-xs mt-2">USD / Escrow Secured</p>
                 </div>
 
-                <div class="text-left bg-white/5 rounded-xl p-6 border border-white/5">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-full bg-aeon-gold/10 flex items-center justify-center text-aeon-gold shrink-0">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-white font-bold mb-1">Corporate Financing</p>
-                            <p class="text-gray-400 text-sm mb-4">
-                                Strategic acquisition available with <strong>12-month installment plan</strong>.
-                            </p>
-                            <a href="https://www.afternic.com/domain/metaeon.ai" target="_blank" class="text-aeon-meta hover:text-white text-sm font-bold flex items-center gap-2 transition-colors">
-                                View Options <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
+                <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-12 space-y-4">
+                    <div class="bg-white/5 p-4 border border-white/5">
+                        <p class="text-aeon-gold font-header text-sm mb-1">
+                            <i class="fa-regular fa-clock mr-2"></i>Extended Financing
+                        </p>
+                        <p class="text-gray-300 text-sm font-body">
+                            Available in <strong>12 monthly installments</strong> via Afternic. Own the eon without immediate capital strain.
+                        </p>
                     </div>
+                    
+                    <a href="https://www.afternic.com/domain/metaeon.ai" target="_blank" class="block w-full py-3 bg-aeon-blue/20 text-aeon-blue border border-aeon-blue font-header text-sm hover:bg-aeon-blue hover:text-white transition-colors">
+                        Proceed to Checkout
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-white/5 py-12 bg-black mt-auto">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-50 text-xs tracking-widest">
+    <footer class="relative z-10 border-t border-aeon-sub py-10 bg-black mt-auto">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-60 text-xs font-body tracking-widest">
             <div>
                 &copy; 2026 METAEON.AI
             </div>
-            <div class="mt-4 md:mt-0">
-                <button onclick="handleEmailClick(event)" class="hover:text-white transition-colors">JOSHUA369X@GMAIL.COM</button>
+            <div class="mt-4 md:mt-0 flex items-center gap-4">
+                <button onclick="handleEmailClick(event)" class="hover:text-aeon-gold transition-colors">joshua369x@gmail.com</button>
             </div>
         </div>
     </footer>
 
-    <!-- Toast -->
-    <div id="toast" class="fixed bottom-10 left-1/2 bg-white text-black px-8 py-4 rounded-full shadow-[0_0_50px_rgba(6,104,225,0.4)] z-50 flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
-        <i class="fa-solid fa-check-circle text-aeon-meta"></i>
-        <span class="font-bold text-sm">Email copied to clipboard</span>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 bg-aeon-void text-aeon-gold px-8 py-4 border border-aeon-gold/30 z-50 flex items-center gap-4 shadow-2xl">
+        <i class="fa-solid fa-check"></i>
+        <span class="font-header text-xs tracking-widest">EMAIL COPIED TO CLIPBOARD</span>
     </div>
 
     <!-- Scripts -->
