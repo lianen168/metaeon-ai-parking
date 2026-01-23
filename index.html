@@ -8,7 +8,8 @@
     
     <!-- Fonts & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Cinzel:wght@500;800&display=swap" rel="stylesheet">
+    <!-- Outfit for Main Text, Cinzel for the 'ae' wings -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,6 +33,7 @@
                     animation: {
                         'float': 'float 8s ease-in-out infinite',
                         'breathe': 'breathe 4s ease-in-out infinite',
+                        'wing-flap': 'wing-flap 5s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
@@ -39,8 +41,12 @@
                             '50%': { transform: 'translateY(-15px)' },
                         },
                         breathe: {
-                            '0%, 100%': { transform: 'scale(1)', opacity: 0.8 },
-                            '50%': { transform: 'scale(1.05)', opacity: 1 },
+                            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+                        },
+                        'wing-flap': {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '50%': { transform: 'rotate(5deg)' }, /* Subtle flap */
                         }
                     }
                 }
@@ -56,76 +62,73 @@
         }
 
         /* 
-           THE CORE MORPH COMPONENT 
-           This combines the Infinity Symbol, Letter A, and Letter E
+           THE BUTTERFLY CONTAINER
+           Holds: Met + [ae + ∞] + on
         */
-        .met-butterfly-container {
+        .logo-container {
+            display: inline-flex;
+            align-items: baseline; /* Align text baselines */
+        }
+
+        .butterfly-core {
             display: inline-grid;
             place-items: center;
             position: relative;
-            width: 1.4em; /* Adjust width relative to text size */
-            height: 1em;
-            margin: 0 0.1em;
-            vertical-align: bottom;
+            width: 1.8em; /* Width for the ae pair */
+            margin: 0 -0.1em; /* Pull letters closer */
         }
 
-        /* The Infinity Symbol (The Skeleton) */
-        .infinity-core {
+        /* The Infinity Symbol (Background) */
+        .infinity-symbol {
             position: absolute;
-            font-size: 0.8em; /* Smaller than the letters */
-            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.6em; /* Smaller than letters */
+            color: rgba(255, 255, 255, 0.4);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%); /* Center it */
             z-index: 0;
             animation: breathe 4s ease-in-out infinite;
         }
 
-        /* The Wings (Letters A and E) */
-        .wing-letter {
+        /* The Wings (Lower Case a & e) */
+        .wing-text {
             font-family: 'Cinzel', serif;
-            font-weight: 800;
-            position: absolute;
-            top: -0.1em;
-            line-height: 1;
+            font-weight: 700;
+            position: relative;
             z-index: 10;
-            mix-blend-mode: screen; /* Blend with the infinity symbol */
+            display: inline-block;
+            line-height: 1;
+            /* Blend mode makes the infinity symbol visible "through" or behind */
+            mix-blend-mode: screen; 
             transition: all 0.3s ease;
         }
 
-        /* Left Wing (Letter A - Meta Blue) */
-        .wing-a {
-            left: -0.1em;
+        .wing-left {
             color: #0668E1;
-            /* Rotate to look like a left wing */
-            transform: rotate(-15deg);
-            background: linear-gradient(135deg, #0668E1 30%, #00d4ff 100%);
+            /* Skew and Rotate to look like left wing */
+            transform: skewX(-5deg) rotate(-5deg);
+            background: linear-gradient(135deg, #0668E1 20%, #4facfe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Wing Flap Animation */
-            animation: flap-left 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(6, 104, 225, 0.5));
+            margin-right: -0.15em; /* Overlap with e */
         }
 
-        /* Right Wing (Letter E - Aeon Gold) */
-        .wing-e {
-            right: -0.1em;
+        .wing-right {
             color: #D4AF37;
-            /* Rotate to look like a right wing */
-            transform: rotate(15deg);
-            background: linear-gradient(225deg, #D4AF37 30%, #fbd786 100%);
+            /* Skew and Rotate to look like right wing */
+            transform: skewX(5deg) rotate(5deg);
+            background: linear-gradient(225deg, #D4AF37 20%, #FDC830 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Wing Flap Animation */
-            animation: flap-right 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            margin-left: -0.15em; /* Overlap with a */
         }
 
-        @keyframes flap-left {
-            0%, 100% { transform: rotate(-15deg) translateX(0); }
-            50% { transform: rotate(-25deg) translateX(-2px); } /* Flap Up/Out */
+        /* Hover Effect for the Butterfly */
+        .butterfly-core:hover .wing-left {
+            transform: skewX(-10deg) rotate(-15deg) translateX(-2px);
         }
-
-        @keyframes flap-right {
-            0%, 100% { transform: rotate(15deg) translateX(0); }
-            50% { transform: rotate(25deg) translateX(2px); } /* Flap Up/Out */
+        .butterfly-core:hover .wing-right {
+            transform: skewX(10deg) rotate(15deg) translateX(2px);
         }
 
         /* Glass Cards */
@@ -164,15 +167,14 @@
 
     <!-- Nav -->
     <nav class="relative z-50 container mx-auto px-6 py-8 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-widest text-white flex items-end">
-            MET
-            <!-- Mini Morph for Nav -->
-            <div class="met-butterfly-container text-2xl mx-1">
-                <i class="fa-solid fa-infinity infinity-core"></i>
-                <span class="wing-letter wing-a">a</span>
-                <span class="wing-letter wing-e">e</span>
+        <!-- Logo in Nav (Smaller Version) -->
+        <div class="text-xl font-bold tracking-wide text-white flex items-center">
+            Met
+            <div class="butterfly-core text-2xl mx-[2px]">
+                <span class="wing-text wing-left text-xl">a</span>
+                <span class="wing-text wing-right text-xl">e</span>
             </div>
-            ON.AI
+            on.ai
         </div>
         <button onclick="handleEmailClick(event)" class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-white border-b border-transparent hover:border-aeon-gold transition-all pb-1">
             Contact Owner
@@ -189,20 +191,21 @@
         </div>
 
         <!-- THE MAIN TITLE -->
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none mb-8 tracking-tight flex justify-center items-end">
-            <span>MET</span>
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-none mb-8 tracking-tight flex justify-center items-center logo-container">
+            <span>Met</span>
             
-            <!-- THE GIANT BUTTERFLY MORPH -->
-            <div class="met-butterfly-container text-[1em] mx-2 md:mx-4">
-                <!-- 1. The Connector (Infinity) -->
-                <i class="fa-solid fa-infinity infinity-core"></i>
-                <!-- 2. The Left Wing (Letter A - Blue) -->
-                <span class="wing-letter wing-a">a</span>
-                <!-- 3. The Right Wing (Letter E - Gold) -->
-                <span class="wing-letter wing-e">e</span>
+            <!-- THE AE BUTTERFLY CORE -->
+            <div class="butterfly-core mx-1">
+                <!-- 1. Infinity Symbol (Behind) -->
+                <i class="fa-solid fa-infinity infinity-symbol"></i>
+                <!-- 2. Wings (ae) -->
+                <div class="relative z-10 flex items-center justify-center">
+                    <span class="wing-text wing-left">a</span>
+                    <span class="wing-text wing-right">e</span>
+                </div>
             </div>
             
-            <span>ON</span>
+            <span>on</span>
         </h1>
 
         <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
