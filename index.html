@@ -36,23 +36,11 @@
                     },
                     keyframes: {
                         flicker: {
-                            '0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%': {
-                                opacity: 1,
-                                textShadow: '0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff'
-                            },
-                            '20%, 24%, 55%': {
-                                opacity: 0.5,
-                                textShadow: 'none'
-                            }
+                            '0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%': { opacity: 1, textShadow: '0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff' },
+                            '20%, 24%, 55%': { opacity: 0.5, textShadow: 'none' }
                         },
-                        scanline: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100%)' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                        scanline: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' }, }
                     }
                 }
             }
@@ -61,29 +49,23 @@
     <style>
         body { background-color: #020005; color: #ffffff; overflow-x: hidden; }
         .glitch-hover:hover { animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite; color: #00f3ff; }
-        @keyframes glitch-anim {
-            0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) } 100% { transform: translate(0) }
-        }
+        @keyframes glitch-anim { 0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) } 40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) } 80% { transform: translate(2px, -2px) } 100% { transform: translate(0) } }
         .scanlines { background: linear-gradient( to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2) ); background-size: 100% 4px; position: fixed; pointer-events: none; inset: 0; z-index: 50; }
         .neon-border { box-shadow: 0 0 5px #00f3ff, inset 0 0 5px #00f3ff; border: 1px solid #00f3ff; }
         .cyber-panel { background: rgba(10, 0, 20, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 0, 255, 0.2); position: relative; }
         .corner-accent::before { content: ''; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; border-top: 2px solid #ff00ff; border-left: 2px solid #ff00ff; }
         .corner-accent::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 20px; height: 20px; border-bottom: 2px solid #00f3ff; border-right: 2px solid #00f3ff; }
+        #formStatus { display: none; }
     </style>
 </head>
 <body class="bg-cyber-black text-white font-body">
 
     <div class="scanlines"></div>
-
-    <!-- Background Fog -->
     <div class="fixed inset-0 z-0">
         <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-cyber-purple/20 blur-[150px] rounded-full animate-pulse"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-cyber-cyan/10 blur-[150px] rounded-full"></div>
     </div>
 
-    <!-- Nav -->
     <nav class="relative z-40 container mx-auto px-6 py-8 flex justify-between items-center border-b border-cyber-dim">
         <div class="font-header text-2xl font-bold tracking-widest">
             NEON<span class="text-cyber-pink animate-flicker">VEIL</span><span class="text-cyber-cyan text-sm align-top">.AI</span>
@@ -93,7 +75,6 @@
         </a>
     </nav>
 
-    <!-- Main Hero -->
     <main class="relative z-10 container mx-auto px-6 pt-20 pb-32 flex flex-col items-center text-center flex-grow">
         <div class="mb-6 flex items-center gap-4">
             <span class="h-[1px] w-12 bg-cyber-pink/50"></span>
@@ -110,21 +91,17 @@
             <span class="text-sm font-code text-gray-600 mt-2 block">// Where code becomes the new fabric.</span>
         </p>
         
-        <!-- Action Module -->
         <div class="flex flex-col md:flex-row gap-6 w-full max-w-lg">
-            <!-- Buy Button -->
             <a href="https://www.spaceship.com/s/buy/neonveil.ai/8pZpV1xgtBxhYDVN" target="_blank" class="group relative flex-1 bg-cyber-cyan/10 border border-cyber-cyan text-cyber-cyan font-header font-bold py-4 px-8 hover:bg-cyber-cyan hover:text-black transition-all duration-300 uppercase tracking-wider text-center neon-border">
                 Acquire Asset
                 <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
             </a>
-            <!-- Offer Button -->
             <a href="#offer-section" class="flex-1 border border-cyber-pink/50 text-cyber-pink font-code py-4 px-8 hover:border-cyber-pink hover:shadow-[0_0_15px_rgba(255,0,255,0.4)] transition-all duration-300 uppercase tracking-widest text-center">
                 Make Offer
             </a>
         </div>
     </main>
 
-    <!-- Use Cases Grid -->
     <section class="relative z-10 container mx-auto px-6 py-20 border-t border-cyber-dim bg-black/50">
         <div class="grid md:grid-cols-2 gap-8">
             <div class="cyber-panel p-8 corner-accent group hover:bg-white/5 transition-colors animate-float">
@@ -150,14 +127,16 @@
         </div>
     </section>
 
-    <!-- Offer Form Section -->
     <section id="offer-section" class="relative z-10 container mx-auto px-6 py-24">
         <div class="max-w-2xl mx-auto">
             <div class="cyber-panel p-8 corner-accent">
                 <h3 class="font-header text-3xl text-center text-cyber-pink mb-2 animate-flicker">Submit Your Offer</h3>
                 <p class="font-code text-center text-gray-500 mb-8 text-xs">// Private negotiation protocol</p>
                 <form id="offerForm" action="https://formsubmit.co/zlqsl2018@gmail.com" method="POST">
-                    <!-- Form Inputs -->
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Offer for NeonVeil.ai">
+
                     <div class="space-y-6">
                         <div>
                             <label for="offer_amount" class="font-code text-cyber-cyan text-sm tracking-widest">OFFER_AMOUNT (USD)</label>
@@ -171,35 +150,26 @@
                             <input type="email" name="email" id="email" required class="w-full bg-cyber-dark/80 border border-cyber-pink/30 text-white font-code p-3 mt-2 focus:border-cyber-pink focus:ring-0 focus:shadow-[0_0_15px_rgba(255,0,255,0.4)] transition-all" placeholder="your@email.com">
                         </div>
                     </div>
-                    <!-- Honeypot -->
-                    <input type="text" name="_honey" style="display:none">
-                    <!-- Disable Captcha -->
-                    <input type="hidden" name="_captcha" value="false">
                     
-                    <!-- Submit Button -->
                     <div class="pt-8">
                         <button type="submit" class="w-full bg-cyber-pink/20 border border-cyber-pink text-cyber-pink font-header text-center py-3 hover:bg-cyber-pink hover:text-white transition-all cursor-pointer text-lg tracking-widest">
                             > TRANSMIT_OFFER
                         </button>
                     </div>
                 </form>
-                <!-- Form Status Message -->
                 <div id="formStatus" class="text-center font-code text-sm mt-6"></div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing / Terminal -->
     <section class="relative z-10 container mx-auto px-6 py-24 border-t border-cyber-dim">
         <div class="max-w-3xl mx-auto border border-gray-800 bg-black p-2 font-code text-sm shadow-2xl">
-            <!-- Terminal Header -->
             <div class="bg-gray-900 px-4 py-2 flex items-center gap-2 border-b border-gray-800 mb-4">
                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 <span class="ml-2 text-gray-500">root@neonveil:~# asset_valuation</span>
             </div>
-            <!-- Terminal Body -->
             <div class="p-4 space-y-4">
                 <div class="flex justify-between items-end border-b border-gray-800 pb-2">
                     <span class="text-gray-400">TARGET_ASSET:</span>
@@ -225,7 +195,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="relative z-10 border-t border-cyber-dim py-8 bg-black mt-auto">
         <div class="container mx-auto px-6 flex justify-between items-center text-xs font-code text-gray-600">
             <div>&copy; 2026 NEONVEIL.AI</div>
@@ -236,63 +205,63 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('offerForm');
             const statusDiv = document.getElementById('formStatus');
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(form);
-                const submitButton = form.querySelector('button[type="submit"]');
-                
-                statusDiv.innerHTML = '<span class="text-gray-500">TRANSMITTING...</span>';
-                submitButton.disabled = true;
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
 
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+                    submitButton.innerHTML = 'TRANSMITTING...';
+                    submitButton.disabled = true;
+                    statusDiv.style.display = 'block';
+                    statusDiv.innerHTML = '<span class="text-gray-500">INITIATING TRANSMISSION...</span>';
+
+                    const formData = new FormData(form);
+                    
+                    // Key Fix: Force the action URL to use FormSubmit's AJAX endpoint.
+                    let actionUrl = form.action;
+                    if (!actionUrl.includes('/ajax/')) {
+                        actionUrl = actionUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
                     }
-                })
-                .then(response => {
-                    // When using AJAX, we expect a JSON response.
-                    // If the response is 'ok' (status 200-299), we parse it.
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    // If the response is not 'ok', it's a server error. We try to parse the error message from the body.
-                    return response.json().then(errorData => {
-                        // We create a new error to be caught by the .catch() block.
-                        throw new Error(errorData.message || 'Server error occurred.');
-                    });
-                })
-                .then(data => {
-                    // FormSubmit returns { "ok": true } or { "success": true } on success.
-                    if (data.ok || data.success) {
-                        statusDiv.innerHTML = '<span class="text-cyber-cyan"><i class="fa-solid fa-check-circle mr-2"></i>Offer sent successfully! We will contact you shortly.</span>';
+
+                    fetch(actionUrl, {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        statusDiv.innerHTML = '<span class="text-cyber-cyan"><i class="fa-solid fa-check-circle mr-2"></i>TRANSMISSION SUCCESSFUL. STAND BY FOR RESPONSE.</span>';
                         form.reset();
-                    } else {
-                         // If FormSubmit reports an error (e.g., invalid email).
-                         statusDiv.innerHTML = `<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Error: ${data.errors ? data.errors.map(err => err.message).join(', ') : 'Could not send offer.'}</span>`;
-                    }
-                })
-                .catch(error => {
-                    // This block now catches genuine network issues or server errors.
-                    statusDiv.innerHTML = `<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Submission failed. Please check your connection and try again.</span>`;
-                    console.error("Form submission error:", error);
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                     // Clear the status message after a few seconds.
-                     setTimeout(() => {
-                        statusDiv.innerHTML = '';
-                    }, 8000);
+                        submitButton.innerHTML = "SENT";
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                            statusDiv.style.display = "none";
+                        }, 4000);
+                    })
+                    .catch(error => {
+                        statusDiv.innerHTML = '<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>ERROR: CONNECTION INTERRUPTED. RETRY.</span>';
+                        console.error('Form Submission Error:', error);
+                        
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+
+                        setTimeout(() => {
+                            statusDiv.style.display = "none";
+                        }, 5000);
+                    });
                 });
-            });
+            }
         });
     </script>
 </body>
