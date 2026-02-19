@@ -175,8 +175,7 @@
                     <input type="text" name="_honey" style="display:none">
                     <!-- Disable Captcha -->
                     <input type="hidden" name="_captcha" value="false">
-                    <!-- AJAX -->
-                    <input type="hidden" name="_next" value="https://neonveil.ai">
+                    
                     <!-- Submit Button -->
                     <div class="pt-8">
                         <button type="submit" class="w-full bg-cyber-pink/20 border border-cyber-pink text-cyber-pink font-header text-center py-3 hover:bg-cyber-pink hover:text-white transition-all cursor-pointer text-lg tracking-widest">
@@ -260,25 +259,35 @@
                     }
                 })
                 .then(response => {
+                    // When using AJAX, we expect a JSON response.
+                    // If the response is 'ok' (status 200-299), we parse it.
                     if (response.ok) {
                         return response.json();
                     }
-                    throw new Error('Network response was not ok.');
+                    // If the response is not 'ok', it's a server error. We try to parse the error message from the body.
+                    return response.json().then(errorData => {
+                        // We create a new error to be caught by the .catch() block.
+                        throw new Error(errorData.message || 'Server error occurred.');
+                    });
                 })
                 .then(data => {
-                    if (data.ok) {
+                    // FormSubmit returns { "ok": true } or { "success": true } on success.
+                    if (data.ok || data.success) {
                         statusDiv.innerHTML = '<span class="text-cyber-cyan"><i class="fa-solid fa-check-circle mr-2"></i>Offer sent successfully! We will contact you shortly.</span>';
                         form.reset();
                     } else {
-                        // FormSubmit.co sometimes returns error in `errors` field
+                         // If FormSubmit reports an error (e.g., invalid email).
                          statusDiv.innerHTML = `<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Error: ${data.errors ? data.errors.map(err => err.message).join(', ') : 'Could not send offer.'}</span>`;
                     }
                 })
                 .catch(error => {
-                    statusDiv.innerHTML = '<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Error: Could not connect to the server. Please try again.</span>';
+                    // This block now catches genuine network issues or server errors.
+                    statusDiv.innerHTML = `<span class="text-cyber-pink"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Submission failed. Please check your connection and try again.</span>`;
+                    console.error("Form submission error:", error);
                 })
                 .finally(() => {
                     submitButton.disabled = false;
+                     // Clear the status message after a few seconds.
                      setTimeout(() => {
                         statusDiv.innerHTML = '';
                     }, 8000);
